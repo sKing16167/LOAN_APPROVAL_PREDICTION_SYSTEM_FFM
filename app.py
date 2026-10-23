@@ -129,6 +129,20 @@ with st.sidebar:
     
     st.markdown("---")
     st.info("💡 **Financial Insight:** Lower thresholds increase loan acceptance volume but escalate Default/NPL risks.")
+    
+    # Report Download in Sidebar
+    report_docx_path = os.path.join("reports", "FFM_CIE2_Loan_Approval_Prediction_Report.docx")
+    if os.path.exists(report_docx_path):
+        with open(report_docx_path, "rb") as f:
+            docx_bytes = f.read()
+        st.markdown("---")
+        st.download_button(
+            label="📄 Download Official Report (.docx)",
+            data=docx_bytes,
+            file_name="FFM_CIE2_Loan_Approval_Prediction_Report.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            use_container_width=True
+        )
 
 # Header
 st.markdown('<div class="main-title">🏦 Financial Data Analysis & Management System</div>', unsafe_allow_html=True)
@@ -640,6 +654,24 @@ with tab_benchmark:
 with tab_docs:
     st.markdown("### 📘 University Project Documentation & Academic Alignment")
     st.write("Academic documentation prepared for the FFM CIE-2 Continuous Assessment.")
+    
+    # Download Button Banner
+    report_docx_path = os.path.join("reports", "FFM_CIE2_Loan_Approval_Prediction_Report.docx")
+    if os.path.exists(report_docx_path):
+        with open(report_docx_path, "rb") as f:
+            docx_bytes = f.read()
+        col_dl1, col_dl2 = st.columns([2, 1])
+        with col_dl1:
+            st.info("📥 **Download Official Academic Project Report:** Formatted with title block, metadata tables, formulas, and rubrics.")
+        with col_dl2:
+            st.download_button(
+                label="⬇️ Download Word Report (.docx)",
+                data=docx_bytes,
+                file_name="FFM_CIE2_Loan_Approval_Prediction_Report.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                type="primary",
+                use_container_width=True
+            )
     
     with st.expander("📌 1. Problem Definition & Objectives", expanded=True):
         st.markdown("""
